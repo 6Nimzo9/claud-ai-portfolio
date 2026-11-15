@@ -1,0 +1,3 @@
+# Verified dependencies from the portfolio development environment.
+mcp==2.3.0
+requests==2.34.2

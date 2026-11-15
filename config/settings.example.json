@@ -1,0 +1,10 @@
+{
+  "version": "0.6.0",
+  "model": "llama3.2:latest",
+  "local_model": "llama3.2:latest",
+  "ollama_url": "http://127.0.0.1:11434",
+  "embedding_model": "bge-m3",
+  "reasoning_enabled": true,
+  "critique_enabled": true,
+  "grounding_enabled": true
+}

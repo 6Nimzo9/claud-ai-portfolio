@@ -1,0 +1,60 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+.venv*/
+venv/
+env/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+config/settings.json
+*.pem
+*.key
+secrets/
+credentials/
+
+# Personal data and databases
+database/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# AI models and local artifacts
+models/
+ollama/
+*.gguf
+*.safetensors
+*.bin
+
+# Runtime data
+logs/
+backups/
+workspace/
+.codex/
+*.log
+
+# Temporary and backup files
+*.bak
+*.bak_*
+*.tmp
+*.rar
+*.zip
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claud AI · Live Conversation Room</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">C</div><div><strong>Claud AI</strong><span>Communication Center</span></div></div>
+      <div class="side-heading"><span>DISCUSSIONS</span><button id="refreshBtn" class="icon-btn" title="Refresh">↻</button></div>
+      <div id="sessions" class="sessions"><div class="empty-side">Loading sessions…</div></div>
+      <div class="side-footer"><span class="local-dot"></span> Local database · read-only</div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div><div class="eyebrow">LIVE MONITOR</div><h1 id="topic">Select a discussion</h1><div id="sessionMeta" class="session-meta">Waiting for a communication session</div></div>
+        <div class="top-actions"><span id="connection" class="connection"><i></i> Connecting</span><button id="followLiveBtn" class="secondary-btn follow-active" title="Automatically follow the newest active discussion">Following active session</button><button id="pauseVisualBtn" class="secondary-btn" title="Pause visual updates">Pause updates</button></div>
+      </header>
+
+      <section class="stats-row">
+        <div class="stat"><span>EXCHANGES</span><strong id="exchangeCount">—</strong></div>
+        <div class="stat"><span>MESSAGES</span><strong id="messageCount">0</strong></div>
+        <div class="stat"><span>SESSION STATUS</span><strong id="statusValue" class="status-text">—</strong></div>
+        <div class="stat"><span>LAST ACTIVITY</span><strong id="lastActivity">—</strong></div>
+      </section>
+
+      <section class="conversation-card">
+        <div class="conversation-head"><div><strong>Conversation stream</strong><span>Messages appear as they are recorded by the MCP bridge</span></div><span id="liveBadge" class="live-badge">● LIVE</span></div>
+        <div id="timeline" class="timeline"><div class="welcome"><div class="welcome-icon">↔</div><h2>Your AI discussion appears here</h2><p>Start a discussion from ChatGPT Desktop using the Claud MCP tools. This room refreshes automatically.</p></div></div>
+        <div id="thinking" class="thinking hidden"><span class="avatar claud-avatar">C</span><span class="thinking-label">Claud is processing through its Core pipeline</span><span class="dots"><i></i><i></i><i></i></span></div>
+      </section>
+      <footer class="footnote"><span>Updates every 750 ms · Per-message updates, not token streaming</span><span id="dbStatus">Checking database…</span></footer>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

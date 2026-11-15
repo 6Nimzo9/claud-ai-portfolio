@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="theme-color" content="#070c16"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Claud AI — Cognitive Interface</title><link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/vendor/github-dark.min.css">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">✳</div><div><b>CLAUD AI</b><small>PERSONAL COGNITIVE INTELLIGENCE</small></div></div>
+  <button class="newchat" id="newChat"><span class="newchat-icon">＋</span><span>New chat</span><kbd>Ctrl K</kbd></button>
+  <div class="side-label">YOUR CONVERSATIONS</div><div id="conversationList" class="conversation-list"></div>
+  <div class="side-bottom">
+    <div class="profile-menu" id="profileMenu">
+      <button class="user profile-trigger" id="profileTrigger" aria-expanded="false"><div class="avatar">✳</div><div><b>Claud AI</b><small>Personal intelligence · Menu</small></div><span class="dot" id="statusDot"></span><span class="profile-chevron">⌃</span></button>
+      <div class="profile-dropdown hidden" id="profileDropdown">
+        <div class="profile-menu-label">COGNITIVE SYSTEM</div>
+        <button class="nav active" data-view="chat">◉ &nbsp; Chat</button>
+        <button class="nav" data-view="memory">▤ &nbsp; Memory</button>
+        <button class="nav" data-view="knowledge">◇ &nbsp; Knowledge</button>
+        <button class="nav" data-view="development">⌘ &nbsp; Development Engine</button>
+        <button class="nav" data-view="system">◈ &nbsp; System status</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main">
+<header><button class="mobile-menu" id="menu">☰</button><div class="header-identity"><span class="header-orb">✳</span><div><b id="pageTitle">Claud AI</b><small id="pageSub">Your thinking partner</small></div></div><div class="header-right"><span class="system-label">LOCAL INTELLIGENCE</span><span class="pill"><i id="ollamaDot"></i><span id="modelName">Connecting…</span></span></div></header>
+<section class="chat-view" id="chatView">
+ <div class="chat-center">
+  <div class="welcome" id="welcome"><div class="welcome-mark">✳</div><div class="eyebrow">YOUR PERSONAL COGNITIVE INTELLIGENCE</div><h1>Think deeper.<br><em>Go further.</em></h1><p>I'm Claud AI. Let's reason, explore ideas, and build understanding together.</p>
+  <div class="suggestions"><button data-prompt="Help me analyze a difficult decision. Challenge my assumptions.">◈ <span><b>Analyze a decision</b><small>Think through complexity</small></span></button><button data-prompt="What do you remember about me and my projects?">▤ <span><b>Explore my memory</b><small>Connect what you know</small></span></button><button data-prompt="Explain how you reason and identify uncertainty.">⌁ <span><b>Test your reasoning</b><small>Inspect your thinking</small></span></button><button data-prompt="What can you currently do, and what are your limitations?">✳ <span><b>Test Claud AI</b><small>Explore capabilities</small></span></button></div></div>
+  <div class="messages" id="messages"></div>
+  <div class="composer-wrap"><div class="composer"><button class="attach-ghost" id="attachBtn" type="button" title="Attach a text file" aria-label="Attach a text file">＋</button><input id="fileInput" type="file" accept=".txt,.md,.csv,.json,.py,.js,.html,.css,.log,.xml" hidden><textarea id="messageInput" rows="1" placeholder="Message Claud AI…"></textarea><button id="sendBtn" title="Send message" aria-label="Send message">↑</button></div><div class="hint"><span class="hint-pulse"></span> Claud AI can make mistakes. Verify important information.</div></div>
+ </div>
+ <aside class="intelligence-panel" id="intelligencePanel">
+   <div class="intel-heading"><div><span class="intel-kicker">CLAUD SYSTEMS</span><h3>Live intelligence</h3></div><span class="intel-live"><i></i> LIVE</span></div>
+   <div class="intel-core"><div class="intel-orb"><span>✳</span></div><b id="intelState">Initializing</b><small id="intelModel">Local model · checking</small></div>
+   <div class="intel-section"><div class="intel-label">RUNTIME STATUS</div><div class="intel-stat"><span>Core engine</span><b id="intelCore">Checking</b></div><div class="intel-stat"><span>Ollama</span><b id="intelOllama">Checking</b></div><div class="intel-stat"><span>Model</span><b id="intelModelName">—</b></div></div>
+   <div class="intel-section"><div class="intel-label">COGNITIVE CAPABILITIES</div><div class="intel-stat"><span>Reasoning</span><b id="intelReasoning">—</b></div><div class="intel-stat"><span>Self-critique</span><b id="intelCritique">—</b></div><div class="intel-stat"><span>Grounding</span><b id="intelGrounding">—</b></div></div>
+   <div class="intel-section"><div class="intel-label">CURRENT SESSION</div><div class="intel-stat"><span>Conversation</span><b id="intelConversation">New chat</b></div><div class="intel-stat"><span>Messages</span><b id="intelMessages">0</b></div><div class="intel-activity" id="intelActivity">Awaiting your next instruction</div></div>
+ </aside>
+</section>
+<section class="panel hidden" id="memoryView"><div class="panel-head"><div><h2>Memory</h2><p>Persistent personal memories stored by Claud AI.</p></div></div><div class="add-memory"><input id="memoryInput" placeholder="Add a memory…"><button id="saveMemory">Save memory</button></div><div id="memoryList"></div></section>
+<section class="panel hidden" id="knowledgeView"><div class="panel-head"><div><h2>Knowledge base</h2><p>Structured facts, assumptions, inferences and open questions.</p></div></div><div id="knowledgeList"></div></section>
+<section class="panel hidden" id="systemView"><div class="panel-head"><div><h2>System status</h2><p>Live status from the local Claud AI runtime.</p></div><button id="refreshStatus">Refresh</button></div><div id="systemCards" class="status-grid"></div><div class="settings"><h3>Cognitive controls</h3><div id="toggles"></div></div></section>
+<section class="panel hidden" id="developmentView">
+  <div class="panel-head">
+    <div>
+      <h2>Development Engine</h2>
+      <p>Plan, review, and manage Claud AI development tasks.</p>
+    </div>
+    <button id="developmentRefresh">Refresh</button>
+  </div>
+
+  <div class="development-safety">
+    <strong>Execution disabled</strong>
+    <span>Tasks can be planned and reviewed, but no code will be executed.</span>
+  </div>
+
+  <div class="development-create">
+    <h3>Create development task</h3>
+    <input id="developmentTaskTitle" type="text"
+           placeholder="Task title">
+    <textarea id="developmentTaskDescription"
+              placeholder="Describe the development objective..."
+              rows="4"></textarea>
+    <button id="createDevelopmentTask">Create task</button>
+    <p id="developmentMessage"></p>
+  </div>
+
+  <div class="development-layout">
+    <div class="development-list-panel">
+      <h3>Development tasks</h3>
+      <div id="developmentTasks">Loading tasks...</div>
+    </div>
+
+    <div class="development-detail-panel">
+      <h3>Task details</h3>
+      <div id="developmentDetail">
+        Select a task to inspect its plan and history.
+      </div>
+    </div>
+  </div>
+</section>
+</main></div>
+<script src="/vendor/marked.min.js"></script>
+<script src="/vendor/purify.min.js"></script>
+<script src="/vendor/highlight.min.js"></script>
+<script src="/app.js"></script>
+</body></html>
